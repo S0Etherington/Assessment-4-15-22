@@ -1,5 +1,4 @@
-let keanuCompliment = require('./db.json')
-let globalID = 6
+
 
 module.exports = {
     getCompliment: (req, res) => {
@@ -27,36 +26,6 @@ module.exports = {
         let randomFortune = fortunes[randomIndex]
 
         res.status(200).send(randomFortune)
-      },
-
-      newKeanu: (req, res) => {
-          const { contents, rating } =req.body
-          let newCompliment = {
-              id: globalID,
-              contents,
-              rating
-          }
-          keanuCompliment.unshift(newCompliment)
-          globalID++
-          res.status(200).send(keanuCompliment)
-      },
-
-      deleteKeanu: (req, res) => {
-          let index = keanuCompliment.findIndex(elem => elem.id === +req.params.id)
-          keanuCompliment.splice(index, 1)
-          res.status(200).send(keanuCompliment)
-      },
-
-      updateKeanu: (req, res) => {
-          const { id } = req.params
-          const { type } = req.body
-          let index = keanuCompliment.findIndex(elem => +elem.id === +id)
-          if(type === 'minus' && keanuCompliment[index].rating > 0){
-              keanuCompliment[index].rating -= 1
-              res.status(200).send(keanuCompliment)
-          }else if(type === 'plus' && keanuCompliment[index].rating < 5){
-            keanuCompliment[index].rating += 1
-            res.status(200).send(keanuCompliment)
-          }
       }
-    }
+
+}

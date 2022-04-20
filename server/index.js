@@ -8,7 +8,8 @@ app.use(cors());
 
 app.use(express.json()); // When we want to be able to accept JSON.
 
-const {getCompliment, getFortune, newKeanu, deleteKeanu, updateKeanu} = require("./controller")
+const {getCompliment, getFortune} = require("./controller")
+const {newKeanu, deleteKeanu, updateKeanu} = require("./keanuController")
 
 app.get("/api/compliment", getCompliment);
 app.get('/api/fortunes', getFortune)
